@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <div id="root"></div>
+
+  <!-- 바닐라JS는 페이지를 전부 리렌더링 -->
+  <!-- <script>
+    const rootElement = document.getElementById("root");
+
+    const random = () => {
+      const num = Math.floor(Math.random() * (10 - 1) + 1);
+      const element = `<button>${num}</button>`;
+      rootElement.innerHTML = element;
+    };
+    
+    setInterval(random, 1000);
+  </script> -->
+
+  <!-- React는 변경된 요소만 리렌더링 -->
+  <script type="text/babel">
+    const rootElement = document.getElementById("root");
+
+    const random = () => {
+      const num = Math.floor(Math.random() * (10 - 1) + 1);
+      const element = <button>{num}</button>;
+      ReactDOM.render(element, rootElement);
+    };
+    
+    setInterval(random, 1000);
+  </script>
+</body>
+</html>
