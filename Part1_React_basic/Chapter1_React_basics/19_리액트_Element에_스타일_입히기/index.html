@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root"></div>
+
+    <style>
+      .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+      
+      .blue {background-color: #008CBA;} /* Blue */
+      .red {background-color: #f44336;} /* Red */ 
+      .gray {background-color: #e7e7e7; color: black;} /* Gray */ 
+      .black {background-color: #555555;} /* Black */
+    </style>
+
+    <script type="text/babel">
+      const rootElement = document.getElementById("root");
+
+      function Button({color, style, ...props}) {
+        return <button className={`button ${style}`} {...props} style={style} />
+      }
+
+      const element = (
+        <>
+          <Button className="button" style={{borderRadius: "50%"}}>Green</Button>
+          <Button className="button blue" style={{borderRadius: 8}}>Blue</Button>
+          <Button className="button red">Red</Button>
+          <Button className="button gray">Gray</Button>
+          <Button className="button black">Black</Button>
+        </>
+      );
+
+      ReactDOM.render(element, rootElement);
+    </script>
+  </body>
+</html>
