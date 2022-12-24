@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const rootElement = document.getElementById("root");
+
+      const App = () => {
+        const [data, setData] = React.useState(null);
+        const [error, setError] = React.useState(null);
+
+        React.useEffect(() => {
+          fetch("https://raw.githubusercontent.com/techoi/raw-data-api/main/simple-api.json")
+          .then((data) => (data.json()))
+          .then((json) => {setData(json.data)})
+          .catch((error) => {
+            setError(error.message);
+          })
+        }, []);
+
+        if (error != null) {
+          return (
+            <p>{error}</p>
+          );
+        }
+
+        if (data == null) {
+          return <p>Loading...</p>
+        }
+
+        return (
+          <>
+            <p>people</p>
+            {data.people.map((p) => (
+              <div key={p.age}>
+                <span>name : {p.name} </span>
+                <span>age : {p.age}</span>
+                <br/>
+              </div>
+            ))}
+          </>
+        )
+      }
+      
+      ReactDOM.render(<App />, rootElement);
+    </script>
+  </body>
+</html>
