@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <div id="root"></div>
+  <script type="text/babel">
+    const rootElement = document.getElementById('root');
+
+    // const element = document.createElement('h1');
+    // element.textContent = "Hello World!";
+    // const element = React.createElement('h1', { children: "Hello World!" });
+    // const text = "Hello World!";
+    // const titleClass = "title";
+    // const props = { className: titleClass, children: text }
+    // const element = <h1 className={ titleClass }>{ text }</h1>
+    // const element = <h1 className={ props.titleClass }>{ props.children }</h1>
+    // const element = <h1 { ...props }/>
+    // const element = (
+    //   <>
+    //     <h1>Hi</h1>
+    //     <h3>Bye</h3>
+    //     <h5>children</h5>
+    //   </>
+    // );
+    const Paint = ({title, desc}) => (
+      <>
+        <h1>{title}</h1>
+        <h3>{desc}</h3>
+      </>
+    );
+
+    const element = (
+      <>
+        <Paint title="A" desc="a" />
+        <Paint title="B" desc="b" />
+        <Paint title="C" desc="c" />
+      </>
+    )
+    // rootElement.appendChild(element);
+    ReactDOM.createRoot(rootElement).render(element,);
+  </script>
+</body>
+</html>
