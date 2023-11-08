@@ -24,20 +24,34 @@
     //     <h5>children</h5>
     //   </>
     // );
-    const Paint = ({title, desc}) => (
-      <>
-        <h1>{title}</h1>
-        <h3>{desc}</h3>
-      </>
-    );
+    const Paint = ({ text }) => {
+      if (text[0] === text[0].toUpperCase()) {
+        return (<h1>{text}</h1>)
+      }
+      else
+      {
+        return (<h3>{text}</h3>)
+      }
+    };
+
+    function Number({ number }) {
+      return number % 2 === 0 ? <h1>{number}</h1> : <h3>{number}</h3>
+    }
 
     const element = (
       <>
-        <Paint title="A" desc="a" />
-        <Paint title="B" desc="b" />
-        <Paint title="C" desc="c" />
+        <Paint text="ASDF" />
+        <Paint text="asdf" />
+        <Number number={2} />
+        <Number number={3} />
+
+        {
+          [1, 2, 3, 4, 5, 6, 7, 8, 9].map((number) => (
+            <Number number={number} />
+          ))
+        }
       </>
-    )
+    );
     // rootElement.appendChild(element);
     ReactDOM.createRoot(rootElement).render(element,);
   </script>
